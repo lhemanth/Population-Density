@@ -6,7 +6,7 @@ public class SimpleAndSequential extends USRectangle{
 		this.breadth = breadth;
 		this.censusData = censusData;
 	}
-	//process the data to find the four corners of the U.S. rectangle using a sequential O(n) algorithm where n is the number of census-block-groups.
+
 	public void findUSMap() {
 		int i=0;
 		while(i<censusData.data_size) {

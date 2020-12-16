@@ -12,10 +12,10 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import java.util.Observable;
 import java.util.Observer;
-
+import javax.swing.border.EtchedBorder;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EtchedBorder;
+
 
 @SuppressWarnings("serial")
 public class MapPane extends JPanel implements Observer{

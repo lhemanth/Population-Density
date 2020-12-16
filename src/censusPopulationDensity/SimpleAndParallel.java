@@ -55,12 +55,12 @@ public class SimpleAndParallel extends USRectangle{
         		Rectangle rec = null;
                 long pop = 0;
                 do {
-                	//Read Census Group information from Census Data
+                	
         			CensusGroup censusGroup = censusData.data[i];
         			if(censusGroup != null) {
         				Rectangle temp = new Rectangle(censusGroup.longitude, censusGroup.longitude, censusGroup.latitude, censusGroup.latitude);
         				if(rec!=null)
-        					rec = rec.encompass(temp);//Update west, south, north and east coordinates based on new census group
+        					rec = rec.encompass(temp);
         				else
         					rec = temp;
         				pop += censusGroup.population;

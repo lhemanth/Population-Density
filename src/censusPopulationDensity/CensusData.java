@@ -22,7 +22,6 @@ public class CensusData {
 				new_data[i] = data[i];
 			data = new_data;
 		}
-		
 		CensusGroup g = new CensusGroup(population,latitude,longitude); 
 		data[data_size++] = g;
 	}
