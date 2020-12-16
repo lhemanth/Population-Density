@@ -1,15 +1,12 @@
 package censusPopulationDensity;
-
 import java.io.BufferedReader;
 import java.io.IOException;
-
 public abstract class USRectangle implements InputQuery {
 	int length,breadth;
 	CensusData censusData;
 	float left, bottom, right, top;
 	Rectangle usRectangle, userQuery;
 	long overallPopulation;
-	
 	public int parseInput(BufferedReader br) throws IOException {
 		System.out.println("Please give west, south, east, north coordinates of your query rectangle: ");
 		try {
@@ -39,16 +36,13 @@ public abstract class USRectangle implements InputQuery {
 			}
 			userQuery = new Rectangle(left, right, top, bottom);
 		} catch (Exception e) {
-			//e.printStackTrace();
 			System.out.println("Exiting as only numeric values are accepted for the coordinates");
 			return 0;
 		}
 		return 1;
 	}
-	
-	public abstract void findUSMap();
-	
-	public Pair<Integer,Float> fetchPopulationBasedOnInput() {
+public abstract void findUSMap();
+public Pair<Integer,Float> fetchPopulationBasedOnInput() {
 		long popInArea = calculatePopulationBasedOnInput();
 		System.out.println("population of rectangle: " + popInArea);
 		float percent = (float)(popInArea * 100)/overallPopulation;

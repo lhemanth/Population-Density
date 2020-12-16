@@ -1,6 +1,4 @@
 package censusPopulationDensity;
-
-
 public class CensusGroup {
 	public int   population;
 	public float realLatitude;
@@ -15,7 +13,6 @@ public class CensusGroup {
 	private float mercatorConversion(float lat){
 		float latpi = (float)(lat * Math.PI / 180);
 		float x = (float)Math.log(Math.tan(latpi) + 1 / Math.cos(latpi));
-		//System.out.println(lat + " -> " + x);
 		return x;
 	}
 }

@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -19,7 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
-
 @SuppressWarnings("serial")
 public class InteractionPane extends JComponent {
 	private MapGrid mapGrid;
@@ -27,20 +25,14 @@ public class InteractionPane extends JComponent {
 	private ButtonGroup versionRadios;
 	private JTextField numRowsEditorField, numColumnsEditorField;
 	private static JTextField regPopDisplay, regPercDisplay;
-
-	public InteractionPane(final JFrame appFrame){
+    public InteractionPane(final JFrame appFrame){
 		this.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-		
-		// Interaction Pane is laid out horizontally
-		BoxLayout interactionPaneLayout = new BoxLayout(this, BoxLayout.X_AXIS);
+	   BoxLayout interactionPaneLayout = new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(interactionPaneLayout);
-		
-		// Interaction Pane includes a Version sub-panel laid out vertically
-		JPanel programVersions = new JPanel();
+	    JPanel programVersions = new JPanel();
 		BoxLayout programVersionsLayout = new BoxLayout(programVersions, BoxLayout.Y_AXIS);
 		programVersions.setLayout(programVersionsLayout);
-		// create the radio buttons 
-		v1Radio = new JRadioButton("V.1: Simple, Sequential", true);
+	    v1Radio = new JRadioButton("V.1: Simple, Sequential", true);
 		v1Radio.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				USMaps.running = USMaps.Version.ONE;
@@ -70,38 +62,30 @@ public class InteractionPane extends JComponent {
 				USMaps.running = USMaps.Version.FIVE;
 			}
 		});
-		// And a button to run the thing
-		final JButton runButton = new JButton("Run");
+         final JButton runButton = new JButton("Run");
 		runButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				try {
 					USMaps.runProgram(appFrame);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
-		// add the radio buttons to a button group
 		versionRadios = new ButtonGroup();
 		versionRadios.add(v1Radio);
 		versionRadios.add(v2Radio);
 		versionRadios.add(v3Radio);
 		versionRadios.add(v4Radio);
 		versionRadios.add(v5Radio);
-		// add the radio buttons and run button to the Versions sub-panel
 		programVersions.add(v1Radio);
 		programVersions.add(v2Radio);
 		programVersions.add(v3Radio);
 		programVersions.add(v4Radio);
 		programVersions.add(v5Radio);
 		programVersions.add(runButton);
-		// at last, add the program Versions sub-panel to the Interaction Pane
 		add(programVersions);
-		
-		// Create a sub-panel to change the line separation of the MapPane
 		JPanel rowColPanel = new JPanel();
-		// Add an editor (label + text field) for the number of rows
 		JPanel numRowsEditor = new JPanel();
 		JLabel numRowsEditorLabel = new JLabel("Number of Rows:");
 		numRowsEditorField = new JTextField(3);
@@ -124,7 +108,7 @@ public class InteractionPane extends JComponent {
 		numRowsEditorField.addFocusListener(new FocusListener(){
 			private String text;
 			public void focusGained(FocusEvent e) {
-				text = numRowsEditorField.getText(); // save data that was already entered	
+				text = numRowsEditorField.getText(); 	
 			}
 			public void focusLost(FocusEvent e) {
 				String s = numRowsEditorField.getText();
@@ -145,7 +129,6 @@ public class InteractionPane extends JComponent {
 		});
 		numRowsEditor.add(numRowsEditorLabel);
 		numRowsEditor.add(numRowsEditorField);
-		// Add an editor (label + text field) for the number of columns also!
 		JPanel numColumnsEditor = new JPanel();
 		JLabel numColumnsEditorLabel = new JLabel("Number of Columns");
 		numColumnsEditorField = new JTextField(3);
@@ -168,7 +151,7 @@ public class InteractionPane extends JComponent {
 		numColumnsEditorField.addFocusListener(new FocusListener(){
 			private String text;
 			public void focusGained(FocusEvent e) {
-				text = numColumnsEditorField.getText(); // save data that was already entered	
+				text = numColumnsEditorField.getText(); 
 			}
 			public void focusLost(FocusEvent e) {
 				String s = numColumnsEditorField.getText();
@@ -191,10 +174,7 @@ public class InteractionPane extends JComponent {
 		numColumnsEditor.add(numColumnsEditorField);
 		rowColPanel.add(numRowsEditor);
 		rowColPanel.add(numColumnsEditor);
-		// Finally, add sub-panel to the Interaction Pane
 		this.add(rowColPanel);
-		
-		// Create a sub-panel to display the data received from PopulationQuery
 		JPanel dataDisplayPanel = new JPanel();
 		JPanel popDisplaySubPanel = new JPanel();
 		JLabel regPopLabel = new JLabel("Regional Population:");
@@ -210,10 +190,8 @@ public class InteractionPane extends JComponent {
 		percDisplaySubPanel.add(regPercDisplay);
 		dataDisplayPanel.add(popDisplaySubPanel);
 		dataDisplayPanel.add(percDisplaySubPanel);
-		// add this data display sub-panel to the Interaction Pane
 		this.add(dataDisplayPanel);
 	}
-	
 	public void initMapGrid(int rows, int columns, Observer o){
 		mapGrid = new MapGrid();
 		mapGrid.addObserver(o);
@@ -264,7 +242,6 @@ public class InteractionPane extends JComponent {
 	}
 	
 	public static void displayCensusData(int pop, double perc){
-		//System.out.println(pop + " and " + perc);
 		regPopDisplay.setText("" + pop);
 		DecimalFormat twoDecimals = new DecimalFormat("#.##");
 		regPercDisplay.setText(twoDecimals.format(perc) + "%");		
