@@ -1,6 +1,7 @@
 package censusPopulationDensity;
 
 public class SmarterAndSequential extends USRectangle {
+	int[][] grid;
 	public SmarterAndSequential(int length, int breadth, CensusData data) {
 		this.length = length;
 		this.breadth = breadth;
