@@ -27,7 +27,7 @@ public class USMaps{
 	private static MapPane mapPane;
 	private static InteractionPane interactionPane;
 	private static JFrame appFrame;
-	private static final String FILENAME = "C:\\Users\\sjana\\Downloads\\client\\SupportHemanth\\src\\forkjoin\\CenPop2010.txt";
+	private static final String FILENAME = "C:\\Users\\lella\\Downloads\\populationQuery\\CenPop2010.txt";
 	
 	public static void main(final String[] args) {
 		try {

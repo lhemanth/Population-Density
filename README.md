@@ -14,7 +14,6 @@ Implementation steps of the above code.
 ```
 
 
-
 ## Developed by
 This project is a team effort worked by myself and Vineeth Goshika.
 
